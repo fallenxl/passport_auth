@@ -48,7 +48,7 @@ router.get("/signin", (req, res, next) => {
 
 router.get("/profile", (req, res) => {
   const user = req.user || "Guest";
-  console.log(req.user);
+  console.log(`user: ${req.user}`);
   res.render("profile", { user });
 });
 module.exports = router;
