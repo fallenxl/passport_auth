@@ -35,6 +35,7 @@ router.post(
   passport.authenticate("local", {
     failureRedirect: "signin",
     successRedirect: "profile",
+    passReqToCallback: true
   })
 );
 
@@ -46,9 +47,25 @@ router.get("/signin", (req, res, next) => {
   res.render("signin");
 });
 
-router.get("/profile", (req, res) => {
+router.get("/profile", isAuthenticated ,(req, res) => {
   const user = req.user || "Guest";
   console.log(`user: ${req.user}`);
   res.render("profile", { user });
 });
+
+router.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if(err) return next(err);
+    res.redirect("signin")
+  });
+  res.redirect("signin");
+})
+
+function isAuthenticated (req, res, next) {
+  if(req.isAuthenticated()){
+    return next();
+  }
+
+  return res.redirect("signin");
+}
 module.exports = router;

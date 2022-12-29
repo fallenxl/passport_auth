@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: "FallEnDev",
-    cookie: { maxAge: 36800000, secure: true, sameSite: "none" },
+    cookie: { maxAge: 36800000 },
     resave: false,
     saveUninitialized: false,
   })
