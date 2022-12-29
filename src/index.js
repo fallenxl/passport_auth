@@ -34,9 +34,7 @@ app.use(passport.session());
 app.use(require("./routes/index.routes"));
 
 app.get("/", (req, res) => {
-  const user = req.user || "Guest";
-
-  res.render("signup", { user });
+  res.redirect('users/signin')
 });
 app.listen(PORT, () => {
   console.log(`Server listen on port ${PORT} `);

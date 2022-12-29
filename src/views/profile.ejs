@@ -1,3 +1,16 @@
 <%- layout("layouts/main") %>
-<h1><%= user.username %></h1>
-<h1><%= user.password %></h1>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card mt-4">
+        <div class="card-header">
+          <h3>Profile</h3>
+        </div>
+        <div class="card-body d-flex flex-column">
+            <span><strong>Username:</strong><%= user.username %></span>
+            <span class="fw-bold">Password:</span>
+            <span ><%= user.password %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
